@@ -5,7 +5,7 @@
 
 User::User(const std::string& login, const std::string& pass, const std::string& nick) :
 	m_login(login), m_password(pass), m_nickName(nick)
-{
+{	
 	userRecording(login, pass, nick);
 }
 

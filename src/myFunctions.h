@@ -1,34 +1,28 @@
 #pragma once
 #include <iostream>
-#include "User.h"
+#include "myChat.h"
 
 //запуск проекта(start of the project)
 void startMessengerChat() {
 	while (true)
 	{
-		////переменна€ дл€ работы с чатом (variable for working with chat)
-		//std::unique_ptr<myChat> user1 = std::make_unique<myChat>();
-		//user1->userRegistration("masha", "234e", "Masha");
-		//user1->enterChat();
-		////список всех пользователей(list of all users)
-		//user1->getPersons();
+		//переменна€ дл€ работы с чатом (variable for working with chat)
+		std::unique_ptr<MyChat> user1 = std::make_unique<MyChat>();		
+		user1->enterChat();
+		//список всех пользователей(list of all users)
+		user1->getPersons();
 		////развилка либо ввод сообщени€, либо просмотр вход€щих
 		//	//fork either enter a message or view inbox
-		//user1->MenuChoice();
-		User sasha("sasha", "123", "Sasha");
-
-		bool exit = true;
-		while (exit)
-		{
+		//user1->MenuChoice();	
+		
 			std::cout << "’отите продолжить работу с мессенджером?" << std::endl;
 			std::cout << "≈сли да то нажмите - y, если нет то - n" << std::endl;
 			char enterExit;
 			std::cin >> enterExit;
 			switch (enterExit)
 			{
-			case 'n':
-				exit = false;
-				//return;
+			case 'n':				
+				return;
 			case 'y':
 				break;
 			default:
@@ -36,8 +30,6 @@ void startMessengerChat() {
 				//break;
 			}
 			std::cin.clear();
-			std::cin.ignore(32767, '\n');
-		}
-		return;
+			std::cin.ignore(32767, '\n');		
 	}
 }
