@@ -1,22 +1,25 @@
 #pragma once
 #include <iostream>
 #include "myChat.h"
+#include <memory>
+#include "myServer.h"
 
-//запуск проекта(start of the project)
+//(start of the project)
 void startMessengerChat() {
 	while (true)
 	{
-		//переменная для работы с чатом (variable for working with chat)
-		std::unique_ptr<MyChat> user1 = std::make_unique<MyChat>();		
+		//РїРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С‡Р°С‚РѕРј(variable for working with chat)
+		std::unique_ptr<MyChat> user1 = std::make_unique<MyChat>();
+		//MyChat user1;
 		user1->enterChat();
-		//список всех пользователей(list of all users)
+		//(list of all users)
 		user1->getPersons();
-		////развилка либо ввод сообщения, либо просмотр входящих
+		////СЂР°Р·РІРёР»РєР° Р»РёР±Рѕ РІРІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ, Р»РёР±Рѕ РїСЂРѕСЃРјРѕС‚СЂ РІС…РѕРґСЏС‰РёС…
 		//	//fork either enter a message or view inbox
 		//user1->MenuChoice();	
 		
-			std::cout << "Хотите продолжить работу с мессенджером?" << std::endl;
-			std::cout << "Если да то нажмите - y, если нет то - n" << std::endl;
+			std::cout << "РҐРѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ СЂР°Р±РѕС‚Сѓ СЃ РјРµСЃСЃРµРЅРґР¶РµСЂРѕРј?" << std::endl;
+			std::cout << "Р•СЃР»Рё РґР° С‚Рѕ РЅР°Р¶РјРёС‚Рµ - y, РµСЃР»Рё РЅРµС‚ С‚Рѕ - n" << std::endl;
 			char enterExit;
 			std::cin >> enterExit;
 			switch (enterExit)
@@ -24,9 +27,10 @@ void startMessengerChat() {
 			case 'n':				
 				return;
 			case 'y':
+				myServer();
 				break;
 			default:
-				std::cout << "Введен не верный символ! Значит продолжаем работу:)" << std::endl;
+				std::cout << "Р’РІРµРґРµРЅ РЅРµ РІРµСЂРЅС‹Р№ СЃРёРјРІРѕР»! Р—РЅР°С‡РёС‚ РїСЂРѕРґРѕР»Р¶Р°РµРј СЂР°Р±РѕС‚Сѓ:)" << std::endl;
 				//break;
 			}
 			std::cin.clear();

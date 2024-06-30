@@ -6,40 +6,40 @@
 class MyChat {
 public:
 	MyChat();
-	//регистрация пользователя
+	//СЂРµРіРёСЃС‚СЂР°С†РёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (User registration)
 	void userRegistration();
-	//регистрация вход в чат(registration enter chat)
+	//СЂРµРіРёСЃС‚СЂР°С†РёСЏ РІС…РѕРґ РІ С‡Р°С‚(registration enter chat)
 	void enterChat();
-	//проверка персоны
+	//РїСЂРѕРІРµСЂРєР° РїРµСЂСЃРѕРЅС‹ (person verification)
 	bool sing_in_to();
-	//список пользователей
+	//СЃРїРёСЃРѕРє РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (a list of users)
 	void getPersons();
 
 private:
 	User m_user;
-	//хранение пользователей (user storage)
+	//С…СЂР°РЅРµРЅРёРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ (user storage)
 	std::vector<User> userData;
 
-	//очистка буфера
+	//РѕС‡РёСЃС‚РєР° Р±СѓС„РµСЂР° (clear buffer)
 	void cinClear() {
 		std::cin.clear();
 		std::cin.ignore(32767, '\n');
 	}
-	//ввод строки
+	//РІРІРѕРґ СЃС‚СЂРѕРєРё (line input)
 	std::string getLineOfText()
 	{
 		std::string str = "";
 		std::cin >> str;
 		return str;
 	}
-	//ввод числа
+	//РІРІРѕРґ С‡РёСЃР»Р° (Enter a number)
 	int getint() {
 		while (true) {
 			int num = 0;
 			std::cin >> num;
 			if (std::cin.fail()) {
 				cinClear();
-				std::cout << "Веден не верный символ! ";
+				std::cout << "Р’РµРґРµРЅ РЅРµ РІРµСЂРЅС‹Р№ СЃРёРјРІРѕР»! ";
 			}
 			else
 				return num;

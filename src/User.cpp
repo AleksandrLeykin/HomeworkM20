@@ -18,9 +18,9 @@ std::string User::getValue()
 
 void User::userRecording(const std::string& login, const std::string& pass, const std::string& nick)
 {
-	// поток для записи(stream to write)
+	//РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё(stream to write)
 	std::ofstream out;
-	//дозапись текста в файле (adding text to a file)
+	//РґРѕР·Р°РїРёСЃСЊ С‚РµРєСЃС‚Р° РІ С„Р°Р№Р»Рµ (adding text to a file)
 	out.open("persons.txt", std::ios::app);
 	if (out.is_open())
 		out << login << " " << pass << " " << nick << std::endl;

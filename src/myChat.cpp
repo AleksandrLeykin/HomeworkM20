@@ -4,10 +4,10 @@
 
 MyChat::MyChat()
 {
-	//îêðûòèå ôàéëà äëÿ ÷òåíèÿ
+	//Ð¾ÐºÑ€Ñ‹Ñ‚Ð¸Ðµ Ñ„Ð°Ð¹Ð»Ð° Ð´Ð»Ñ Ñ‡Ñ‚ÐµÐ½Ð¸Ñ (Opening a file for reading)
 	std::ifstream in("persons.txt");
 	if (in.is_open()) {
-		//User newUser;
+		
 		while (in >> m_user.m_login>> m_user.m_password >> m_user.m_nickName)
 			userData.push_back(m_user);
 	}
@@ -16,15 +16,15 @@ MyChat::MyChat()
 
 void MyChat::userRegistration()
 {
-	std::cout << "Ââåäèòå ëîãèí: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð»Ð¾Ð³Ð¸Ð½: Enter login: ";
 	m_user.m_login = getLineOfText();
 	cinClear();
 	std::cout << "\n";
-	std::cout << "Ââåäèòå ïàðîëü: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ: Enter password: ";
 	m_user.m_password = getLineOfText();
 	cinClear();
 	std::cout << "\n";
-	std::cout << "Ââåäèòå èìÿ: ";
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¸Ð¼Ñ: Enter your name:";
 	m_user.m_nickName = getLineOfText();
 	cinClear();
 	std::cout << "\n";
@@ -32,13 +32,13 @@ void MyChat::userRegistration()
 	for (int i = 0; i < userData.size(); i++)
 	{
 		if (userData[i].m_login == m_user.m_login) {
-			std::cout << "Èìÿ çàíÿòî!!" << std::endl;
+			std::cout << "Ð˜Ð¼Ñ Ð·Ð°Ð½ÑÑ‚Ð¾!! Name taken!!" << std::endl;
 			return;
 		}
 	}
 	userData.push_back(m_user);
 	
-	//òåñòîâàÿ çàïèñü â ôàéë
+	//Ñ‚ÐµÑÑ‚Ð¾Ð²Ð°Ñ Ð·Ð°Ð¿Ð¸ÑÑŒ Ð² Ñ„Ð°Ð¹Ð» (test write to file)
 	m_user.userRecording(m_user.m_login, m_user.m_password, m_user.m_nickName);	
 }
 
@@ -46,14 +46,15 @@ void MyChat::enterChat()
 {
 	while (true)
 	{
-		std::cout << "Äëÿ âõîäà íàæìèòå - 1, äëÿ ðåãèñòðàöèè - 2, äëÿ âûõîäà 3: ";
+		std::cout << "Ð”Ð»Ñ Ð²Ñ…Ð¾Ð´Ð° Ð½Ð°Ð¶Ð¼Ð¸Ñ‚Ðµ - 1, Ð´Ð»Ñ Ñ€ÐµÐ³Ð¸ÑÑ‚Ñ€Ð°Ñ†Ð¸Ð¸ - 2, Ð´Ð»Ñ Ð²Ñ‹Ñ…Ð¾Ð´Ð° - 3:\n" 
+				  << "To enter, press - 1, to register - 2, to exit - 3:";
 		int number = getint();
 		switch (number)
 		{
 		case 1:
 			if (sing_in_to() == false)
 			{
-				std::cout << "Íå âåðíûé ëîãèí èëè ïàðîëü!!" << std::endl;
+				std::cout << "ÐÐµ Ð²ÐµÑ€Ð½Ñ‹Ð¹ Ð»Ð¾Ð³Ð¸Ð½ Ð¸Ð»Ð¸ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ!! Wrong login or password!!" << std::endl;
 				break;
 			}
 			return;
@@ -63,7 +64,7 @@ void MyChat::enterChat()
 		case 3:
 			return;
 		default:
-			std::cout << "Ââåäåí íå âåðíûé ñèìâîë!!" << "\n";
+			std::cout << "Ð’Ð²ÐµÐ´ÐµÐ½ Ð½Ðµ Ð²ÐµÑ€Ð½Ñ‹Ð¹ ÑÐ¸Ð¼Ð²Ð¾Ð»!! Invalid character entered!!" << "\n";
 			break;
 		}
 	}
@@ -71,16 +72,16 @@ void MyChat::enterChat()
 
 bool MyChat::sing_in_to()
 {
-	std::cout << "Ââåäèòå ñâîå èìÿ:" << std::endl;
+	std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÑÐ²Ð¾Ðµ Ð¸Ð¼Ñ: Enter your name:" << std::endl;
 	std::string buffer_login = "";
 	buffer_login = getLineOfText();
 	int coincidence = 0;
 	for (int i = 0; i < userData.size(); ++i) {
 		if (userData[i].m_login == buffer_login) {
-			std::cout << "Ââåäèòå ïàðîëü:" << std::endl;
+			std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð°Ñ€Ð¾Ð»ÑŒ: Enter password:" << std::endl;
 			std::string buffer_password = getLineOfText();
 			if (userData[i].m_password == buffer_password) {
-				std::cout << userData[i].m_nickName << ", welcome ó íàñ â ÷àòå!" << std::endl;
+				std::cout << userData[i].m_nickName << ", welcome in our chat! Ð”Ð¾Ð±Ñ€Ð¾ Ð¿Ð¾Ð¶Ð°Ð»Ð¾Ð²Ð°Ñ‚ÑŒ Ð² Ð½Ð°Ñˆ Ñ‡Ð°Ñ‚!" << std::endl;
 				++coincidence;
 			}
 			++coincidence;
@@ -95,7 +96,7 @@ bool MyChat::sing_in_to()
 
 void MyChat::getPersons()
 {
-	std::cout << "Çàðåãåñòðèðîâàííûõ ïîëüçîâàòåëåé: " << userData.size() << std::endl;
+	std::cout << "Ð—Ð°Ñ€ÐµÐ³ÐµÑÑ‚Ñ€Ð¸Ñ€Ð¾Ð²Ð°Ð½Ð½Ñ‹Ñ… Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»ÐµÐ¹: Registered users: " << userData.size() << std::endl;
 	for (int i = 0; i < userData.size(); ++i)
 	{
 		std::cout << (i + 1) << ")." << userData[i].m_nickName << " ";
