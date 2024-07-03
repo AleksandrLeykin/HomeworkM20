@@ -13,9 +13,8 @@ void startMessengerChat() {
 		//MyChat user1;
 		user1->enterChat();
 		//(list of all users)
-		user1->getPersons();
-		//запуск сервера server startup
-		myServer();
+		user1->getPersons();		
+		
 		////развилка либо ввод сообщения, либо просмотр входящих
 		//	//fork either enter a message or view inbox
 		//user1->MenuChoice();	
@@ -29,7 +28,7 @@ void startMessengerChat() {
 			case 'n':				
 				return;
 			case 'y':
-				//myServer();
+				myServer();
 				break;
 			default:
 				std::cout << "Введен не верный символ! Значит продолжаем работу:)" << std::endl;
