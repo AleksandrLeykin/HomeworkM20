@@ -2,7 +2,7 @@
 #include <iostream>
 #include "myChat.h"
 #include <memory>
-#include "myServer.h"
+#include "myClient.h"
 
 //(start of the project)
 void startMessengerChat() {
@@ -14,8 +14,6 @@ void startMessengerChat() {
 		user1->enterChat();
 		//(list of all users)
 		user1->getPersons();
-		//запуск сервера server startup
-		myServer();
 		////развилка либо ввод сообщения, либо просмотр входящих
 		//	//fork either enter a message or view inbox
 		//user1->MenuChoice();	
@@ -29,11 +27,11 @@ void startMessengerChat() {
 			case 'n':				
 				return;
 			case 'y':
-				//myServer();
+				myClient();
 				break;
 			default:
 				std::cout << "Введен не верный символ! Значит продолжаем работу:)" << std::endl;
-				//break;
+				break;
 			}
 			std::cin.clear();
 			std::cin.ignore(32767, '\n');		
